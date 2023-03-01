@@ -1,0 +1,18 @@
+Erro do Pyaudio -- 
+
+Arquivos de desenvolvimento são necessários. Esses arquivos são instalados com o portaudio19-devpacote.
+
+sudo apt install portaudio19-dev
+
+depois instale o pyaudio e demais pacotes
+
+pip3 install pyttsx3 sudo apt install espeak pip3 install pyaudio or use sudo apt install python3-pyaudio
+
+se quiser verificar os dispositivos de audio
+
+for index, name in enumerate(sr.Microphone.list_microphone_names()):
+    print("Microphone with name \"{1}\" found for `Microphone(device_index={0})`".format(index, name))
+    
+remover as msg de ALsa
+
+execute no terminal com python app.py 2>/dev/null
