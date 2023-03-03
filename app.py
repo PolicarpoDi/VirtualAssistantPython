@@ -3,6 +3,7 @@ import pyttsx3
 from datetime import datetime
 import wikipedia as wk
 import pywhatkit as pw
+import webbrowser
 
 
 audio = sr.Recognizer()
@@ -11,31 +12,39 @@ maquina = pyttsx3.init()
 def executa_comando():
 
     try:
-        with sr.Microphone() as source:
-            print("Ouvindo...")
-
-            voz = audio.listen(source)
+        with sr.Microphone(1) as mic:
+            # Chama o algortmo de redução de ruidos no som
+            audio.adjust_for_ambient_noise(mic)
+            print("O que você precisa?")
+            # lista os microfones utilizandos
+            #print(sr.Microphone().list_microphone_names())
+            
+            voz = audio.listen(mic)
             
             comando = audio.recognize_google(voz, language='pt-BR')
             comando = comando.lower()
             
             if 'cleiton' in comando:
                 comando = comando.replace('cleiton', '')
-                #maquina.say(comando)
+                maquina.setProperty('rate', 160)
                 maquina.runAndWait()       
-                print(comando)
-    except:
+                print('Você disse: ' + comando)
+    except sr.UnknownValueError:
         print('Microfone não esta OK')
         
     return comando
     
     
+def horas():
+    hora = datetime.now().strftime('%H:%M')
+    print(hora)
+    return hora
+    
 def comando_voz_usuario():
     comando = executa_comando()
     
     if 'horas' in comando:
-        hora = datetime.now().strftime('%H%M')
-        maquina.say('Agora são' + hora)
+        maquina.say('Agora são' + horas())
         maquina.runAndWait()
     elif 'procure por' in comando:
         procurar = comando.replace('procure por', '')
@@ -49,7 +58,15 @@ def comando_voz_usuario():
         resultado = pw.playonyt(musica)
         maquina.say('Tocando musica')
         maquina.runAndWait()
+    elif 'navegador' in comando:
+        resultado = webbrowser.open('https://google.com.br')
+        maquina.say('Abrindo o navegador')
+        maquina.runAndWait()
+    else:
+        print('Não entendi!')
         
+        
+               
         
         
         
