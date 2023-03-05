@@ -15,7 +15,10 @@ def executa_comando():
         with sr.Microphone(1) as mic:
             # Chama o algortmo de redução de ruidos no som
             audio.adjust_for_ambient_noise(mic)
-            print("O que você precisa?")
+            texto_inicial = 'Em que posso ajudar'
+            maquina.say(texto_inicial)
+            maquina.runAndWait()
+            #print("O que você precisa?")
             # lista os microfones utilizandos
             #print(sr.Microphone().list_microphone_names())
             
@@ -24,8 +27,11 @@ def executa_comando():
             comando = audio.recognize_google(voz, language='pt-BR')
             comando = comando.lower()
             
-            if 'cleiton' in comando:
-                comando = comando.replace('cleiton', '')
+            
+            if 'Lisa' in comando:
+                comando = comando.replace('Lisa', '')
+                voices = maquina.setProperty('voices')
+                maquina.setProperty('voice', voices[0].id)
                 maquina.setProperty('rate', 160)
                 maquina.runAndWait()       
                 print('Você disse: ' + comando)
