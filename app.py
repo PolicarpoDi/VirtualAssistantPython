@@ -18,7 +18,6 @@ def executa_comando():
             texto_inicial = 'Em que posso ajudar'
             maquina.say(texto_inicial)
             maquina.runAndWait()
-            #print("O que você precisa?")
             # lista os microfones utilizandos
             #print(sr.Microphone().list_microphone_names())
             
@@ -36,7 +35,10 @@ def executa_comando():
                 maquina.runAndWait()       
                 print('Você disse: ' + comando)
     except sr.UnknownValueError:
-        print('Microfone não esta OK')
+        erro = 'Não consegui te ouvir ou o microfone não esta ok'
+        maquina.say(erro)
+        maquina.runAndWait()
+        print('Ela não conseguiu te ouvir ou o microfone não esta ok')
         
     return comando
     
