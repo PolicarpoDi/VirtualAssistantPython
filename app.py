@@ -70,10 +70,5 @@ def comando_voz_usuario():
         maquina.runAndWait()
     else:
         print('Não entendi!')
-        
-        
-               
-        
-        
-        
+
 comando_voz_usuario()
