@@ -11,9 +11,11 @@ pip install -r requirements.txt
 *  rode o arquivo app.py
 
 #### Correção para serem realizadas:
-[ ] Corrigir a linguagem
+[x] Correção da voz;
 
-[ ] Corrigir a velocidade da pronuncia 
+[x] Corrigir a velocidade da pronuncia;
+
+[ ] Implementar loop ou tempo para o microfone ficar ativo.
 
 
 ### OBS: Caso apresente erro com o pyaudio, verifique a correção de acordo com o arquivo correções pyaudio.
