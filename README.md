@@ -1,6 +1,6 @@
 # VirtualAssistantPython
 
-### Assistente virtual Cleiton, onde ao dizer o seu nome informa a hora, faz pesquisar no wikipedia e busca musicas no youtube.
+### Assistente virtual que ao dizer o seu nome realiza funções como informar a hora, realizar pesquisas no wikipedia e busca musicas no youtube.
 
 #### Iniciando o projeto
 * Crie o ambiente virtual 'venv' e ative
